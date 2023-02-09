@@ -8,6 +8,7 @@ const config = require("./config/database");
 const session = require("express-session");
 
 mongoose.connect(config.database, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set("strictQuery", true);
 
 mongoose.connection.on('connected', ()=>{
     console.log("connected to database " + config.database);
