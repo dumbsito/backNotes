@@ -21,6 +21,7 @@ router.post("/register", (req, res, next) => {
             res.json({success: true, msg: "User registered."});
         }
     });
+    console.log(newUser);
 });
 
 router.post("/authenticate", (req, res, next)=>{
