@@ -29,15 +29,17 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); //allow CORS
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Request-With, Content-Type, Accept, Authorization'); //tell which extra headers the app might have
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    console.log('Middleware');
     next();
-  });
-  app.use(cors());
+});
+
 
   let corsOptions = {
-    origin: ["http://localhost:4200"],
+    origin: ["https://notesapp-78b.netlify.app/"],
     credentials: true
   }
   
